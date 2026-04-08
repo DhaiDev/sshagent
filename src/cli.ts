@@ -365,8 +365,11 @@ EXAMPLES
   # Forward remote port 5432 to local 15432, with auto-reconnect
   ssh-broker tunnel staging-db 5432 -l 15432
 
-  # Run as MCP server (Claude Code launches this)
+  # Run as MCP server (Claude Code / Claude Desktop launches this)
   ssh-broker serve
+
+  # One-line install into Claude Code CLI:
+  claude mcp add ssh-broker -- node /path/to/sshagent/dist/index.js serve
 
 SECURITY MODES (config.json → "securityMode")
   whitelist   Only commands matching the whitelist run. (default, safest)

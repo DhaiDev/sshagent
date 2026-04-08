@@ -127,7 +127,22 @@ ssh-broker tunnel staging-db 5432 -l 15432
 
 ### 7. Use it from Claude Code (MCP)
 
-Add to your Claude Code MCP settings:
+`ssh-broker serve` speaks MCP over stdio, so any MCP-compatible client can drive it — including the **Claude Code CLI**, the Claude desktop app, and other agents.
+
+**Option A — Claude Code CLI (one command):**
+
+```bash
+claude mcp add ssh-broker -- node C:/path/to/sshagent/dist/index.js serve
+```
+
+Then in any Claude Code session:
+
+```bash
+claude
+> /mcp        # confirm ssh-broker is connected
+```
+
+**Option B — manual config** (Claude Desktop, or editing `~/.claude.json` directly):
 
 ```json
 {
@@ -140,7 +155,7 @@ Add to your Claude Code MCP settings:
 }
 ```
 
-Claude Code now sees ssh-broker tools and can run whitelist-approved commands on your hosts — no key material ever leaves your machine.
+Claude Code now sees ssh-broker's tools and can run whitelist-approved commands on your hosts — no key material ever leaves your machine, and every call is audited.
 
 ---
 
