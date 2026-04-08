@@ -1,0 +1,65 @@
+{
+  "hosts": [
+    {
+      "id": "prod-web-1",
+      "name": "Production Web Server 1",
+      "host": "192.168.1.100",
+      "port": 22,
+      "username": "deploy",
+      "privateKeyPath": "~/.ssh/id_rsa"
+    },
+    {
+      "id": "staging-db",
+      "name": "Staging Database",
+      "host": "192.168.1.200",
+      "port": 22,
+      "username": "admin",
+      "password": "CHANGE_ME"
+    }
+  ],
+  "whitelist": [
+    { "pattern": "ls", "type": "prefix", "description": "List files" },
+    { "pattern": "cat", "type": "prefix", "description": "Read files" },
+    { "pattern": "pwd", "type": "prefix", "description": "Print working directory" },
+    { "pattern": "whoami", "type": "prefix", "description": "Current user" },
+    { "pattern": "df", "type": "prefix", "description": "Disk usage" },
+    { "pattern": "free", "type": "prefix", "description": "Memory usage" },
+    { "pattern": "uptime", "type": "prefix", "description": "System uptime" },
+    { "pattern": "ps aux", "type": "prefix", "description": "Process list" },
+    { "pattern": "systemctl status", "type": "prefix", "description": "Service status" },
+    { "pattern": "docker ps", "type": "prefix", "description": "Docker containers" },
+    { "pattern": "docker logs", "type": "prefix", "description": "Docker logs" },
+    { "pattern": "tail", "type": "prefix", "description": "Tail files" },
+    { "pattern": "head", "type": "prefix", "description": "Head files" },
+    { "pattern": "grep", "type": "prefix", "description": "Search in files" },
+    { "pattern": "find", "type": "prefix", "description": "Find files" },
+    { "pattern": "wc", "type": "prefix", "description": "Word count" },
+    { "pattern": "date", "type": "prefix", "description": "Current date" },
+    { "pattern": "hostname", "type": "prefix", "description": "Hostname" }
+  ],
+  "session": {
+    "defaultTtlMs": 1800000,
+    "maxTtlMs": 14400000,
+    "maxConcurrentSessions": 10,
+    "cleanupIntervalMs": 60000
+  },
+  "rateLimit": {
+    "windowMs": 60000,
+    "maxRequestsPerWindow": 30
+  },
+  "server": {
+    "port": 3022,
+    "host": "127.0.0.1",
+    "apiKey": "your-secret-api-key-here"
+  },
+  "audit": {
+    "logDir": "./logs",
+    "maxFileSizeMb": 50,
+    "maxFiles": 10
+  },
+  "exec": {
+    "defaultTimeoutMs": 30000,
+    "maxTimeoutMs": 300000,
+    "maxOutputBytes": 1048576
+  }
+}
