@@ -22,7 +22,14 @@ config.json
 *.pem
 *.key
 id_rsa*
+id_ed25519*
+id_ecdsa*
+*.ppk
 known_hosts
+
+# Local scratch scripts — ad-hoc ssh2 helpers that tend to hold inline
+# host credentials. Never commit them.
+_*
 
 # Editor / OS
 .vscode/
